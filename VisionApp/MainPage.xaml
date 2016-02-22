@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="VisionApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VisionApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            <ListBox Name="TypeListBox" Grid.Row="0" Width="200" Height="150" SelectionChanged="TypeListBox_SelectionChanged">
+                <ListBoxItem>TYPE_UNSPECIFIED</ListBoxItem>
+                <ListBoxItem>FACE_DETECTION</ListBoxItem>
+                <ListBoxItem IsSelected="True">LANDMARK_DETECTION</ListBoxItem>
+                <ListBoxItem>LOGO_DETECTION</ListBoxItem>
+                <ListBoxItem>LABEL_DETECTION</ListBoxItem>
+                <ListBoxItem>TEXT_DETECTION</ListBoxItem>
+                <ListBoxItem >SAFE_SEARCH_DETECTION</ListBoxItem>
+            </ListBox> 
+            <Image Grid.Row="1" x:Name="imageControl" Width="200" Height="200" HorizontalAlignment="Center"/>
+            <ScrollViewer Grid.Row="2" Width="400">
+            <TextBlock Name="resultText" MaxLines="300" HorizontalAlignment="Center" ></TextBlock>
+            </ScrollViewer>
+            <Button Grid.Row="3" Name="SelectButton" Content="Select Image" Click="SelectButton_Click" HorizontalAlignment="Center"></Button>
+        </Grid>
+    </Grid>
+</Page>
