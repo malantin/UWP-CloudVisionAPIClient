@@ -40,14 +40,13 @@ namespace CloudVisionAPI
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // New code:
                 HttpResponseMessage response = await client.PostAsync("", new StringContent(json, Encoding.UTF8, "application/json"));
-                if (response.IsSuccessStatusCode)
-                {
+                //if (response.IsSuccessStatusCode)
+                //{
                     return await response.Content.ReadAsStringAsync();
-                }
+                //}
             }
-            return "";
+            //return "";
         }
 
         private string buildJsonFile(string base64Image, FeatureType type, short maxResults)

@@ -36,7 +36,7 @@ namespace VisionApp
     public sealed partial class MainPage : Page
     {
         //Create Cloud Vision API Client and set Key for API Access
-        static CloudVisionAPIClient APIClient = new CloudVisionAPIClient("AIzaSyB26mx-IjKgiEgnto_Ze_1M9CSrFjKg-Ro");
+        static CloudVisionAPIClient APIClient = new CloudVisionAPIClient("EnterAPIKeyHere");
 
         private StorageFile imageStorageFile;
 
