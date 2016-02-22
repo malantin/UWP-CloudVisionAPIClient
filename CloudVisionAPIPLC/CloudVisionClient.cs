@@ -11,8 +11,6 @@ using Windows.Storage;
 
 namespace CloudVisionAPI
 {
-    // This project can output the Class library as a NuGet Package.
-    // To enable this option, right-click on the project and select the Properties menu item. In the Build tab select "Produce outputs on build".
     public class CloudVisionAPIClient
     {
         //Google API Key
@@ -24,6 +22,13 @@ namespace CloudVisionAPI
             this.APIKey = APIKey;
         }
 
+        /// <summary>
+        /// Annotage an image with the Cloud Vision API
+        /// </summary>
+        /// <param name="file">The image file to annotate</param>
+        /// <param name="type">The type of annotation requested</param>
+        /// <param name="maxResults">The maximum number of results</param>
+        /// <returns></returns>
         public async Task<string> AnnotateImage(StorageFile file, FeatureType type, short maxResults)
         {
             var imageByteArray = await getByteArrayAsync(file);
