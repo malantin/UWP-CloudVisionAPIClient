@@ -13,13 +13,30 @@ namespace CloudVisionAPI
 {
     public class CloudVisionAPIClient
     {
-        //Google API Key
-        private string APIKey = "AIzaSyB26mx-IjKgiEgnto_Ze_1M9CSrFjKg-Ro";
+        //Google Cloud Vision API Key
+        private string _APIKey = "APIKey";
+
+        public string APIKey
+        {
+            get
+            {
+                return _APIKey;
+            }
+
+            set
+            {
+                _APIKey = value;
+            }
+        }
 
         public CloudVisionAPIClient(string APIKey)
         {
-            if(APIKey.Length > 1)
-            this.APIKey = APIKey;
+            this._APIKey = APIKey;
+        }
+
+        public CloudVisionAPIClient()
+        {
+
         }
 
         /// <summary>
@@ -41,7 +58,7 @@ namespace CloudVisionAPI
         {
             using (var client = new HttpClient())
             {                
-                client.BaseAddress = new Uri($"https://vision.googleapis.com/v1/images:annotate?key={APIKey}");
+                client.BaseAddress = new Uri($"https://vision.googleapis.com/v1/images:annotate?key={_APIKey}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

@@ -11,16 +11,19 @@
         <Grid>
 
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-            <ListBox Name="TypeListBox" Grid.Row="0" Width="200" Height="150" SelectionChanged="TypeListBox_SelectionChanged">
+
+            <TextBox Grid.Row="0" Name="APIKeyBox" Width="200" Text="Your API Key" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10" LostFocus="APIKeyBox_LostFocus"></TextBox>
+            <ListBox Name="TypeListBox" Grid.Row="1" Width="200" Height="150" SelectionChanged="TypeListBox_SelectionChanged">
                 <ListBoxItem>TYPE_UNSPECIFIED</ListBoxItem>
                 <ListBoxItem>FACE_DETECTION</ListBoxItem>
                 <ListBoxItem IsSelected="True">LANDMARK_DETECTION</ListBoxItem>
@@ -29,11 +32,18 @@
                 <ListBoxItem>TEXT_DETECTION</ListBoxItem>
                 <ListBoxItem >SAFE_SEARCH_DETECTION</ListBoxItem>
             </ListBox> 
-            <Image Grid.Row="1" x:Name="imageControl" Width="200" Height="200" HorizontalAlignment="Center"/>
-            <ScrollViewer Grid.Row="2" Width="400">
-            <TextBlock Name="resultText" MaxLines="300" HorizontalAlignment="Center" ></TextBlock>
+            <Image Grid.Row="2" x:Name="imageControl" Width="200" Height="200" HorizontalAlignment="Center"/>
+            <ScrollViewer Grid.Row="3" Width="Auto">
+            <TextBlock Name="resultText" MaxLines="1000" HorizontalAlignment="Center" ></TextBlock>
             </ScrollViewer>
-            <Button Grid.Row="3" Name="SelectButton" Content="Select Image" Click="SelectButton_Click" HorizontalAlignment="Center"></Button>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Name="SelectButton" Content="Select Image" Click="SelectButton_Click" HorizontalAlignment="Right" Margin="0,50,25,50"></Button>
+                <Button Grid.Column="1" Name="CaptureButton" Content="Capture Image" Click="CaptureButton_Click" HorizontalAlignment="Left" Margin="25,50,0,50"></Button>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

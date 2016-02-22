@@ -36,17 +36,14 @@ namespace VisionApp
     public sealed partial class MainPage : Page
     {
         //Create Cloud Vision API Client and set Key for API Access
-        static CloudVisionAPIClient APIClient = new CloudVisionAPIClient("EnterAPIKeyHere");
+        private CloudVisionAPIClient APIClient = new CloudVisionAPIClient();
+        //private CloudVisionAPIClient APIClient = new CloudVisionAPIClient("Set API Key here");
 
         private StorageFile imageStorageFile;
 
         public MainPage()
         {
             this.InitializeComponent();
-
-            //captureImage();
-
-            pickImage();
         }
 
         private async void pickImage()
@@ -138,6 +135,16 @@ namespace VisionApp
                 return requestedFeatureType;
             }
             else return FeatureType.LABEL_DETECTION;
+        }
+
+        private void CaptureButton_Click(object sender, RoutedEventArgs e)
+        {
+            captureImage();
+        }
+
+        private void APIKeyBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            APIClient.APIKey = APIKeyBox.Text;
         }
     }
 }
