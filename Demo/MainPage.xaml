@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="VisionApp.MainPage"
+    x:Class="Demo.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:VisionApp"
+    xmlns:local="using:Demo"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -10,17 +10,17 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
             <TextBox Grid.Row="0" Name="APIKeyBox" Width="200" Text="Your API Key" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10" LostFocus="APIKeyBox_LostFocus"></TextBox>
             <ListBox Name="TypeListBox" Grid.Row="1" Width="200" Height="150" SelectionChanged="TypeListBox_SelectionChanged">
@@ -31,10 +31,10 @@
                 <ListBoxItem>LABEL_DETECTION</ListBoxItem>
                 <ListBoxItem>TEXT_DETECTION</ListBoxItem>
                 <ListBoxItem >SAFE_SEARCH_DETECTION</ListBoxItem>
-            </ListBox> 
+            </ListBox>
             <Image Grid.Row="2" x:Name="imageControl" Width="200" Height="200" HorizontalAlignment="Center"/>
             <ScrollViewer Grid.Row="3" Width="Auto">
-            <TextBlock Name="resultText" MaxLines="1000" HorizontalAlignment="Center" ></TextBlock>
+                <TextBlock Name="resultText" MaxLines="1000" HorizontalAlignment="Center" ></TextBlock>
             </ScrollViewer>
             <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>

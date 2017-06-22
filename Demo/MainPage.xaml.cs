@@ -1,34 +1,29 @@
-﻿using CloudVisionAPI;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Graphics.Imaging;
-using Windows.Media.Capture;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.Media.Capture;
+using Windows.Storage.Streams;
+using Windows.Graphics.Imaging;
+using Windows.UI.Xaml.Media.Imaging;
+using CloudVision;
+using System.Threading.Tasks;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace VisionApp
+namespace Demo
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -40,6 +35,7 @@ namespace VisionApp
         //private CloudVisionAPIClient APIClient = new CloudVisionAPIClient("Set API Key here");
 
         private StorageFile imageStorageFile;
+        private Stream imageStream;
 
         public MainPage()
         {
@@ -59,18 +55,16 @@ namespace VisionApp
             if (file != null)
             {
                 imageStorageFile = file;
-                openAndSetImage(imageStorageFile);
+                await openAndSetImageAsync(imageStorageFile);
+                resultText.Text = "loading...";
+                var requestedFeatureType = getSelectedType();
+                var result = APIClient.AnnotateImage(imageStream, requestedFeatureType, 5);
+                resultText.Text = await result;
             }
             else
             {
                 return;
             }
-
-            resultText.Text = "loading...";
-            var requestedFeatureType = getSelectedType();
-            var result = APIClient.AnnotateImage(imageStorageFile, requestedFeatureType, 5);
-            resultText.Text = await result;
-            
         }
 
         private async void captureImage()
@@ -88,14 +82,14 @@ namespace VisionApp
             }
 
             imageStorageFile = file;
-            openAndSetImage(imageStorageFile);
+            await openAndSetImageAsync(imageStorageFile);
             resultText.Text = "loading...";
             var requestedFeatureType = getSelectedType();
-            var result = APIClient.AnnotateImage(imageStorageFile, requestedFeatureType, 5);
+            var result = APIClient.AnnotateImage(imageStream, requestedFeatureType, 5);
             resultText.Text = await result;
         }
 
-        private async void openAndSetImage(StorageFile file)
+        private async Task openAndSetImageAsync(StorageFile file)
         {
             IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.Read);
 
@@ -108,6 +102,8 @@ namespace VisionApp
             await bitmapSource.SetBitmapAsync(softwareBitmapBGR8);
 
             imageControl.Source = bitmapSource;
+
+            imageStream = await file.OpenStreamForReadAsync();
         }
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
@@ -117,12 +113,12 @@ namespace VisionApp
 
         private async void TypeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(resultText != null)
-            { 
-            resultText.Text = "loading...";
+            if (resultText != null && imageStream != null)
+            {
+                resultText.Text = "loading...";
                 var requestedFeatureType = getSelectedType();
-                var result = APIClient.AnnotateImage(imageStorageFile, requestedFeatureType, 5);
-            resultText.Text = await result;
+                var result = APIClient.AnnotateImage(imageStream, requestedFeatureType, 5);
+                resultText.Text = await result;
             }
         }
 

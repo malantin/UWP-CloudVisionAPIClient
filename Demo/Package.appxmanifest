@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="639c00af-8bf5-4bb4-9fa3-30672e208392"
-    Publisher="CN=malantin"
+    Name="bacac562-85ec-485e-a1bc-59ae45e80225"
+    Publisher="CN=Malte Lantin"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="639c00af-8bf5-4bb4-9fa3-30672e208392" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="bacac562-85ec-485e-a1bc-59ae45e80225" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>VisionApp</DisplayName>
-    <PublisherDisplayName>malantin</PublisherDisplayName>
+    <DisplayName>Demo</DisplayName>
+    <PublisherDisplayName>Malte Lantin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="VisionApp.App">
+      EntryPoint="Demo.App">
       <uap:VisualElements
-        DisplayName="VisionApp"
+        DisplayName="Demo"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="VisionApp"
+        Description="Demo"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
