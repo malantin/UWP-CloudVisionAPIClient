@@ -34,8 +34,8 @@ APIClient.AnnotateImage(imageStream, requestedFeatureType, 5);
 
 The solution contains two projects. The client as a portable class library and a demo app to test the client and API.
 
-![Screenshot Landmark Detection](/images/screen_1.png)
+![Screenshot Landmark Detection](https://github.com/n01d/CloudVisionAPIClient/raw/master/Images/screen_1.png)
 
-![Screenshot Landmark Detection](/images/screen_2.png)
+![Screenshot Landmark Detection](https://github.com/n01d/CloudVisionAPIClient/raw/master/Images/screen_2.png)
 
 ‼ Watch out. This an unstable project and should be used with caution 😉
