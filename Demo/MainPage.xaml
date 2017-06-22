@@ -8,11 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid>
+        <Grid Margin="20">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
@@ -20,9 +19,10 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Row="0" Name="APIKeyBox" Width="200" Text="Your API Key" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10" LostFocus="APIKeyBox_LostFocus"></TextBox>
+            <TextBox Grid.Row="0" Grid.ColumnSpan="2" Name="APIKeyBox" Width="200" Text="Your API Key" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10" LostFocus="APIKeyBox_LostFocus"></TextBox>
             <ListBox Name="TypeListBox" Grid.Row="1" Width="200" Height="150" SelectionChanged="TypeListBox_SelectionChanged">
                 <ListBoxItem>TYPE_UNSPECIFIED</ListBoxItem>
                 <ListBoxItem>FACE_DETECTION</ListBoxItem>
@@ -33,10 +33,10 @@
                 <ListBoxItem >SAFE_SEARCH_DETECTION</ListBoxItem>
             </ListBox>
             <Image Grid.Row="2" x:Name="imageControl" Width="200" Height="200" HorizontalAlignment="Center"/>
-            <ScrollViewer Grid.Row="3" Width="Auto">
+            <ScrollViewer Grid.RowSpan="3" Grid.Column="1" Grid.Row="1" Width="Auto">
                 <TextBlock Name="resultText" MaxLines="1000" HorizontalAlignment="Center" ></TextBlock>
             </ScrollViewer>
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
